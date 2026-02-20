@@ -6,47 +6,64 @@ const letter = document.getElementById("letter");
 
 let opened = false;
 
-const text = `Estou enviando essa carta, direto dos monges de ratanaba, com ajuda do Deus tupã e paje rasmisin...
+const message = `Ola deusa bucha,
 
-Os deuses Tupi me falaram em sonhos grandes revelaçoes...
+yanomami de ratanaba e a condessa mais linda de itapevi.
 
-Gostaria de marcar encontro com voce, oh Deusa ruiva.`;
+Venho aqui, humildemente pedir a bela dama dos macaco, para que venha me conceder o prazer de ter um benevolente encontro com vossa majestade.
 
-grave.onclick = function(){
+Voce aceitaria um convite de um mero Bucha?`;
+
+
+grave.onclick = () => {
 
 if(opened) return;
 
 opened = true;
 
+/* zoom suave */
 scene.classList.add("zoom");
 
-setTimeout(()=>{
+/* aparece caixão */
+setTimeout(() => {
 
 coffin.classList.add("show");
 
 },1500);
 
-setTimeout(()=>{
+/* abre tampa */
+setTimeout(() => {
 
 lid.classList.add("open");
-typeText();
 
-},3500);
+/* adiciona classe de detalhe visual */
+lid.style.boxShadow = "0 0 40px rgba(0,0,0,0.9)";
+coffin.style.filter = "drop-shadow(0 0 25px black)";
+
+typeWriter();
+
+},3200);
 
 };
 
-function typeText(){
 
-let i=0;
+/* efeito de escrita */
+
+function typeWriter(){
+
+letter.innerHTML = "";
+
+let i = 0;
 
 function typing(){
 
-if(i < text.length){
+if(i < message.length){
 
-letter.innerHTML += text[i];
+letter.innerHTML += message.charAt(i);
+
 i++;
 
-setTimeout(typing,20);
+setTimeout(typing, 25);
 
 }
 
