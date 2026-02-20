@@ -2,8 +2,8 @@ body{
 margin:0;
 background:linear-gradient(#02030a,#050816);
 font-family:Georgia,serif;
-overflow:hidden;
 color:white;
+overflow:hidden;
 }
 
 /* céu */
@@ -17,11 +17,11 @@ height:100%;
 .moon{
 position:absolute;
 top:50px;
-right:120px;
-width:140px;
-height:140px;
+right:100px;
+width:120px;
+height:120px;
 border-radius:50%;
-background:radial-gradient(circle,#fff,#aaa);
+background:white;
 box-shadow:0 0 60px white;
 }
 
@@ -29,64 +29,51 @@ box-shadow:0 0 60px white;
 position:absolute;
 width:100%;
 height:100%;
-background-image:radial-gradient(white 1px,transparent 1px);
+background-image:radial-gradient(white 1px, transparent 1px);
 background-size:3px 3px;
-opacity:0.4;
+opacity:0.3;
 }
 
 /* fog */
 
 .fog{
 position:absolute;
+bottom:0;
 width:200%;
 height:200px;
 background:linear-gradient(to right,transparent,rgba(255,255,255,0.08),transparent);
-animation:fogMove 60s linear infinite;
+animation:fog 60s infinite linear;
 }
 
-@keyframes fogMove{
+@keyframes fog{
 0%{transform:translateX(-50%);}
 100%{transform:translateX(50%);}
 }
 
-/* fundo com tumbas */
+/* tumbas fundo */
 
 .graveyard{
 position:absolute;
-bottom:120px;
+bottom:100px;
 width:100%;
-height:300px;
 }
 
 .grave-bg{
 position:absolute;
-width:80px;
-height:120px;
+width:70px;
+height:110px;
 background:#1a1a1a;
 border-radius:40px 40px 6px 6px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:12px;
+text-align:center;
+font-size:11px;
+padding-top:40px;
 color:#aaa;
-box-shadow:0 0 10px black;
 }
 
-.g1{left:5%;}
-.g2{left:15%;}
-.g3{left:25%;}
-.g4{left:35%;}
-.g5{left:55%;}
-.g6{left:65%;}
-.g7{left:75%;}
-.g8{left:85%;}
-
-/* sepultura principal */
+/* sepultura */
 
 .scene{
-position:absolute;
-width:100%;
-height:100%;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -94,29 +81,28 @@ flex-direction:column;
 transition:2s;
 }
 
-.grave-main{
-width:200px;
-height:260px;
+.grave{
+width:180px;
+height:240px;
 background:linear-gradient(#444,#111);
-border-radius:100px 100px 10px 10px;
-box-shadow:
-0 0 40px rgba(255,255,255,0.2),
-inset 0 0 20px black;
-position:relative;
+border-radius:90px 90px 10px 10px;
 display:flex;
 align-items:center;
 justify-content:center;
+position:relative;
+box-shadow:0 0 30px rgba(255,255,255,0.2);
+cursor:pointer;
 }
 
-.grave-cross{
+.cross{
 position:absolute;
 top:-40px;
 width:20px;
-height:80px;
+height:70px;
 background:#aaa;
 }
 
-.grave-cross::after{
+.cross::after{
 content:"";
 position:absolute;
 top:20px;
@@ -126,23 +112,21 @@ height:20px;
 background:#aaa;
 }
 
-.grave-name{
-font-size:32px;
-text-shadow:0 0 20px white;
+.name{
+font-size:28px;
 }
 
-/* flores */
-
 .flowers{
+text-align:center;
 margin-top:10px;
-font-size:24px;
+font-size:22px;
 }
 
 /* coffin */
 
 .coffin-container{
 opacity:0;
-transform:translateY(400px);
+transform:translateY(300px);
 transition:2s;
 }
 
@@ -152,9 +136,9 @@ transform:translateY(0);
 }
 
 .coffin{
-width:340px;
-height:600px;
-background:linear-gradient(#3a1111,#1a0505);
+width:320px;
+height:550px;
+background:#2a0d0d;
 clip-path:polygon(
 50% 0%,
 90% 15%,
@@ -164,14 +148,13 @@ clip-path:polygon(
 10% 15%
 );
 position:relative;
-box-shadow:0 0 60px black;
 }
 
 .coffin-lid{
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(#4a1414,#2a0d0d);
+background:#3a1111;
 transition:2s;
 transform-origin:left;
 }
@@ -185,14 +168,16 @@ position:absolute;
 width:100%;
 height:100%;
 padding:20px;
-display:flex;
-flex-direction:column;
-align-items:center;
+box-sizing:border-box;
 }
 
-.letter-container{
-margin-top:20px;
-width:90%;
+.coffin-flowers{
+font-size:24px;
+text-align:center;
+margin-bottom:10px;
+}
+
+.letter{
 height:400px;
 overflow-y:auto;
 font-size:20px;
