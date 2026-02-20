@@ -1,69 +1,47 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
 body{
-height:100vh;
+margin:0;
+background:linear-gradient(#02030a,#050816);
+font-family:Georgia,serif;
 overflow:hidden;
-font-family: "Georgia", serif;
-background: linear-gradient(to top, #02030a, #050a1a);
 color:white;
 }
 
-/* CÉU */
+/* céu */
 
 .sky{
 position:absolute;
 width:100%;
 height:100%;
-z-index:0;
 }
 
 .moon{
 position:absolute;
-top:60px;
+top:50px;
 right:120px;
-width:120px;
-height:120px;
-background:radial-gradient(circle, #fff, #aaa);
+width:140px;
+height:140px;
 border-radius:50%;
-box-shadow:0 0 40px #fff;
+background:radial-gradient(circle,#fff,#aaa);
+box-shadow:0 0 60px white;
 }
 
 .stars{
 position:absolute;
 width:100%;
 height:100%;
-background-image:
-radial-gradient(white 1px, transparent 1px);
-background-size:4px 4px;
+background-image:radial-gradient(white 1px,transparent 1px);
+background-size:3px 3px;
 opacity:0.4;
 }
 
-/* NÉVOA */
+/* fog */
 
 .fog{
 position:absolute;
 width:200%;
 height:200px;
-background:linear-gradient(to right,
-transparent,
-rgba(200,200,255,0.08),
-transparent);
+background:linear-gradient(to right,transparent,rgba(255,255,255,0.08),transparent);
 animation:fogMove 60s linear infinite;
-z-index:1;
-}
-
-.fog1{
-bottom:80px;
-}
-
-.fog2{
-bottom:150px;
-animation-duration:90s;
-opacity:0.6;
 }
 
 @keyframes fogMove{
@@ -71,20 +49,39 @@ opacity:0.6;
 100%{transform:translateX(50%);}
 }
 
-/* ÁRVORES */
+/* fundo com tumbas */
 
-.trees{
+.graveyard{
 position:absolute;
-bottom:0;
+bottom:120px;
 width:100%;
 height:300px;
-background:linear-gradient(to top,
-#000,
-transparent);
-z-index:1;
 }
 
-/* SCENE */
+.grave-bg{
+position:absolute;
+width:80px;
+height:120px;
+background:#1a1a1a;
+border-radius:40px 40px 6px 6px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+color:#aaa;
+box-shadow:0 0 10px black;
+}
+
+.g1{left:5%;}
+.g2{left:15%;}
+.g3{left:25%;}
+.g4{left:35%;}
+.g5{left:55%;}
+.g6{left:65%;}
+.g7{left:75%;}
+.g8{left:85%;}
+
+/* sepultura principal */
 
 .scene{
 position:absolute;
@@ -94,91 +91,58 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-transition:transform 2s;
-z-index:5;
+transition:2s;
 }
 
-/* SEPULTURA */
-
-.grave-container{
+.grave-main{
+width:200px;
+height:260px;
+background:linear-gradient(#444,#111);
+border-radius:100px 100px 10px 10px;
+box-shadow:
+0 0 40px rgba(255,255,255,0.2),
+inset 0 0 20px black;
 position:relative;
-display:flex;
-flex-direction:column;
-align-items:center;
-cursor:pointer;
-}
-
-.grave{
-width:160px;
-height:220px;
-background:linear-gradient(to bottom,#444,#222);
-border-radius:80px 80px 10px 10px;
 display:flex;
 align-items:center;
 justify-content:center;
-box-shadow:0 0 20px rgba(255,255,255,0.2);
-transition:transform 1s;
 }
 
-.grave:hover{
-transform:scale(1.05);
-}
-
-.grave-text{
-font-size:28px;
-color:#ddd;
-text-shadow:0 0 10px #aaa;
-}
-
-.ground{
-width:200px;
-height:40px;
-background:#111;
-border-radius:50%;
-margin-top:-10px;
-}
-
-/* brilho */
-
-.glow{
-animation:glowPulse 3s infinite;
-}
-
-@keyframes glowPulse{
-0%,100%{box-shadow:0 0 20px rgba(200,200,255,0.2);}
-50%{box-shadow:0 0 40px rgba(200,200,255,0.6);}
-}
-
-/* SHOVEL */
-
-.shovel{
+.grave-cross{
 position:absolute;
+top:-40px;
 width:20px;
-height:120px;
-background:#555;
-bottom:150px;
-left:50%;
-transform:translateX(-50%);
-opacity:0;
+height:80px;
+background:#aaa;
 }
 
-.shovel.active{
-opacity:1;
-animation:dig 1s infinite alternate;
+.grave-cross::after{
+content:"";
+position:absolute;
+top:20px;
+left:-20px;
+width:60px;
+height:20px;
+background:#aaa;
 }
 
-@keyframes dig{
-0%{transform:translate(-50%,0) rotate(0deg);}
-100%{transform:translate(-50%,20px) rotate(-20deg);}
+.grave-name{
+font-size:32px;
+text-shadow:0 0 20px white;
 }
 
-/* COFFIN */
+/* flores */
+
+.flowers{
+margin-top:10px;
+font-size:24px;
+}
+
+/* coffin */
 
 .coffin-container{
-position:absolute;
-bottom:50px;
 opacity:0;
-transform:translateY(200px);
+transform:translateY(400px);
 transition:2s;
 }
 
@@ -188,21 +152,28 @@ transform:translateY(0);
 }
 
 .coffin{
-width:220px;
-height:350px;
-background:#2a0d0d;
-border-radius:10px;
+width:340px;
+height:600px;
+background:linear-gradient(#3a1111,#1a0505);
+clip-path:polygon(
+50% 0%,
+90% 15%,
+90% 85%,
+50% 100%,
+10% 85%,
+10% 15%
+);
 position:relative;
-box-shadow:0 0 40px rgba(0,0,0,0.8);
+box-shadow:0 0 60px black;
 }
 
 .coffin-lid{
 position:absolute;
 width:100%;
 height:100%;
-background:#3a1111;
-transform-origin:left;
+background:linear-gradient(#4a1414,#2a0d0d);
 transition:2s;
+transform-origin:left;
 }
 
 .coffin-lid.open{
@@ -211,42 +182,25 @@ transform:rotateY(-120deg);
 
 .coffin-inside{
 position:absolute;
+width:100%;
+height:100%;
 padding:20px;
-font-size:14px;
-opacity:0;
-transition:3s;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-.coffin-inside.show{
-opacity:1;
+.letter-container{
+margin-top:20px;
+width:90%;
+height:400px;
+overflow-y:auto;
+font-size:20px;
+line-height:1.6;
 }
 
-/* LETTER */
-
-.letter{
-white-space:pre-line;
-color:#ddd;
-text-shadow:0 0 5px #aaa;
-}
-
-/* ZOOM */
+/* zoom */
 
 .zoom{
-transform:scale(1.4);
-}
-
-/* RESPONSIVO */
-
-@media(max-width:600px){
-
-.grave{
-width:120px;
-height:180px;
-}
-
-.coffin{
-width:180px;
-height:300px;
-}
-
+transform:scale(1.3);
 }
