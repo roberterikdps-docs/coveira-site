@@ -1,5 +1,3 @@
-/* RESET */
-
 *{
 margin:0;
 padding:0;
@@ -25,12 +23,12 @@ z-index:0;
 
 .moon{
 position:absolute;
-top:50px;
-right:120px;
-width:130px;
-height:130px;
+top:5vh;
+right:8vw;
+width:min(130px,20vw);
+height:min(130px,20vw);
 border-radius:50%;
-background:radial-gradient(circle,#ffffff,#bbbbbb);
+background:radial-gradient(circle,#fff,#bbb);
 box-shadow:0 0 60px rgba(255,255,255,0.9);
 }
 
@@ -49,338 +47,162 @@ opacity:0.3;
 position:absolute;
 bottom:0;
 width:200%;
-height:250px;
-background:linear-gradient(to right,
-transparent,
-rgba(255,255,255,0.08),
-transparent);
+height:200px;
+background:linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
 animation:fogMove 60s linear infinite;
 z-index:1;
 }
 
 @keyframes fogMove{
-
 0%{transform:translateX(-50%);}
 100%{transform:translateX(50%);}
-
 }
 
-/* CEMITÉRIO FUNDO */
+/* CEMITERIO */
 
 .graveyard{
 position:absolute;
-bottom:90px;
+bottom:12vh;
 width:100%;
 height:200px;
 z-index:2;
 }
 
 .grave-bg{
-
 position:absolute;
-
-width:80px;
-height:120px;
-
+width:min(80px,12vw);
+height:min(120px,18vw);
 background:linear-gradient(#2a2a2a,#111);
-
 border-radius:40px 40px 8px 8px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
-font-size:11px;
+font-size:min(11px,2vw);
 color:#aaa;
-
-box-shadow:
-0 0 10px black,
-inset 0 0 10px rgba(255,255,255,0.1);
-
 }
 
-/* CENA PRINCIPAL */
+/* CENA */
 
 .scene{
-
 position:absolute;
-
 width:100%;
 height:100%;
-
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-
 z-index:5;
-
 transition:transform 2s;
-
+padding:10px;
 }
 
-/* SEPULTURA PRINCIPAL */
+/* SEPULTURA */
 
 .grave{
-
-width:200px;
-height:260px;
-
+width:min(200px,40vw);
+height:min(260px,55vw);
 background:linear-gradient(#444,#111);
-
 border-radius:100px 100px 10px 10px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 position:relative;
-
-box-shadow:
-0 0 30px rgba(255,255,255,0.2),
-inset 0 0 20px black;
-
+box-shadow:0 0 30px rgba(255,255,255,0.2), inset 0 0 20px black;
 cursor:pointer;
-
-transition:0.3s;
-
-}
-
-.grave:hover{
-
-transform:scale(1.05);
-
 }
 
 .cross{
-
 position:absolute;
-
-top:-45px;
-
-width:22px;
-height:80px;
-
+top:-40px;
+width:20px;
+height:70px;
 background:#bbb;
-
 }
 
 .cross::after{
-
 content:"";
-
 position:absolute;
-
-top:25px;
+top:20px;
 left:-25px;
-
 width:70px;
-height:22px;
-
+height:20px;
 background:#bbb;
-
 }
 
 .name{
-
-font-size:32px;
-text-shadow:0 0 15px rgba(255,255,255,0.8);
-
+font-size:min(32px,6vw);
 }
 
-/* FLORES */
-
 .flowers{
-
-margin-top:12px;
-font-size:24px;
-
+margin-top:10px;
+font-size:min(24px,5vw);
 }
 
 /* CAIXÃO */
 
 .coffin-container{
-
 opacity:0;
-
 transform:translateY(400px);
-
 transition:2s;
-
 }
 
 .coffin-container.show{
-
 opacity:1;
 transform:translateY(0);
-
 }
 
 .coffin{
-
-width:400px;
-height:680px;
-
+width:min(400px,85vw);
+height:min(680px,85vh);
 background:linear-gradient(#3a1111,#1a0505);
-
-clip-path:polygon(
-50% 0%,
-85% 12%,
-92% 85%,
-50% 100%,
-8% 85%,
-15% 12%
-);
-
+clip-path:polygon(50% 0%,85% 12%,92% 85%,50% 100%,8% 85%,15% 12%);
 position:relative;
-
-box-shadow:
-0 0 60px rgba(0,0,0,0.9),
-inset 0 0 30px rgba(0,0,0,0.8);
-
 }
 
-/* TAMPA */
-
 .coffin-lid{
-
 position:absolute;
-
 width:100%;
 height:100%;
-
 background:linear-gradient(#4a1414,#2a0d0d);
-
 transform-origin:left;
-
 transition:2s;
-
-z-index:2;
-
 }
 
 .coffin-lid.open{
-
 transform:rotateY(-120deg);
-
 }
-
-/* INTERIOR */
 
 .coffin-inside{
-
 position:absolute;
-
-top:90px;
+top:10%;
 left:50%;
-
 transform:translateX(-50%);
-
-width:70%;
-height:450px;
-
-display:flex;
-flex-direction:column;
-
-align-items:center;
-
-z-index:1;
-
+width:80%;
+height:75%;
 }
-
-/* FLORES DO CAIXÃO */
-
-.coffin-flowers{
-
-font-size:26px;
-margin-bottom:15px;
-
-}
-
-/* TEXTO */
 
 .letter{
-
 width:100%;
 height:100%;
-
 overflow-y:auto;
-
-font-size:22px;
-line-height:1.7;
-
-color:#f0f0f0;
-
-text-shadow:0 0 6px black;
-
+font-size:min(22px,4vw);
 background:rgba(0,0,0,0.35);
-
-padding:18px;
-
+padding:15px;
 border-radius:10px;
-
-box-shadow:
-inset 0 0 10px rgba(255,255,255,0.1);
-
-}
-
-/* SCROLL BONITO */
-
-.letter::-webkit-scrollbar{
-
-width:8px;
-
-}
-
-.letter::-webkit-scrollbar-track{
-
-background:rgba(0,0,0,0.3);
-
-}
-
-.letter::-webkit-scrollbar-thumb{
-
-background:#666;
-border-radius:4px;
-
 }
 
 /* ZOOM */
 
 .zoom{
-
-transform:scale(1.3);
-
+transform:scale(1.2);
 }
 
-/* RESPONSIVO */
+/* MOBILE FIX */
 
 @media(max-width:600px){
 
-.coffin{
-
-width:300px;
-height:520px;
-
-}
-
-.coffin-inside{
-
-height:320px;
-
-}
-
-.letter{
-
-font-size:18px;
-
-}
-
-.grave{
-
-width:150px;
-height:200px;
-
+.zoom{
+transform:scale(1);
 }
 
 }
