@@ -14,29 +14,24 @@ Venho aqui, humildemente pedir a bela dama dos macaco, para que venha me concede
 
 Voce aceitaria um convite de um mero Bucha?`;
 
-
-grave.onclick = () => {
+function openCoffin(){
 
 if(opened) return;
 
 opened = true;
 
-/* zoom suave */
 scene.classList.add("zoom");
 
-/* aparece caixão */
 setTimeout(() => {
 
 coffin.classList.add("show");
 
 },1500);
 
-/* abre tampa */
 setTimeout(() => {
 
 lid.classList.add("open");
 
-/* adiciona classe de detalhe visual */
 lid.style.boxShadow = "0 0 40px rgba(0,0,0,0.9)";
 coffin.style.filter = "drop-shadow(0 0 25px black)";
 
@@ -44,10 +39,11 @@ typeWriter();
 
 },3200);
 
-};
+}
 
-
-/* efeito de escrita */
+// SUPORTE COMPLETO
+grave.addEventListener("click", openCoffin);
+grave.addEventListener("touchstart", openCoffin);
 
 function typeWriter(){
 
