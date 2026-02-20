@@ -1,28 +1,37 @@
-body{
+/* RESET */
+
+*{
 margin:0;
-background:linear-gradient(#02030a,#050816);
-font-family:Georgia,serif;
-color:white;
-overflow:hidden;
+padding:0;
+box-sizing:border-box;
 }
 
-/* céu */
+body{
+background:linear-gradient(to top,#02030a,#050816);
+font-family:Georgia, serif;
+color:white;
+overflow:hidden;
+height:100vh;
+}
+
+/* CÉU */
 
 .sky{
 position:absolute;
 width:100%;
 height:100%;
+z-index:0;
 }
 
 .moon{
 position:absolute;
 top:50px;
-right:100px;
-width:120px;
-height:120px;
+right:120px;
+width:130px;
+height:130px;
 border-radius:50%;
-background:white;
-box-shadow:0 0 60px white;
+background:radial-gradient(circle,#ffffff,#bbbbbb);
+box-shadow:0 0 60px rgba(255,255,255,0.9);
 }
 
 .stars{
@@ -34,158 +43,344 @@ background-size:3px 3px;
 opacity:0.3;
 }
 
-/* fog */
+/* NÉVOA */
 
 .fog{
 position:absolute;
 bottom:0;
 width:200%;
-height:200px;
-background:linear-gradient(to right,transparent,rgba(255,255,255,0.08),transparent);
-animation:fog 60s infinite linear;
+height:250px;
+background:linear-gradient(to right,
+transparent,
+rgba(255,255,255,0.08),
+transparent);
+animation:fogMove 60s linear infinite;
+z-index:1;
 }
 
-@keyframes fog{
+@keyframes fogMove{
+
 0%{transform:translateX(-50%);}
 100%{transform:translateX(50%);}
+
 }
 
-/* tumbas fundo */
+/* CEMITÉRIO FUNDO */
 
 .graveyard{
 position:absolute;
-bottom:100px;
+bottom:90px;
 width:100%;
+height:200px;
+z-index:2;
 }
 
 .grave-bg{
+
 position:absolute;
-width:70px;
-height:110px;
-background:#1a1a1a;
-border-radius:40px 40px 6px 6px;
-text-align:center;
+
+width:80px;
+height:120px;
+
+background:linear-gradient(#2a2a2a,#111);
+
+border-radius:40px 40px 8px 8px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
 font-size:11px;
-padding-top:40px;
 color:#aaa;
+
+box-shadow:
+0 0 10px black,
+inset 0 0 10px rgba(255,255,255,0.1);
+
 }
 
-/* sepultura */
+/* CENA PRINCIPAL */
 
 .scene{
-height:100vh;
+
+position:absolute;
+
+width:100%;
+height:100%;
+
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
-flex-direction:column;
-transition:2s;
+
+z-index:5;
+
+transition:transform 2s;
+
 }
 
+/* SEPULTURA PRINCIPAL */
+
 .grave{
-width:180px;
-height:240px;
+
+width:200px;
+height:260px;
+
 background:linear-gradient(#444,#111);
-border-radius:90px 90px 10px 10px;
+
+border-radius:100px 100px 10px 10px;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 position:relative;
-box-shadow:0 0 30px rgba(255,255,255,0.2);
+
+box-shadow:
+0 0 30px rgba(255,255,255,0.2),
+inset 0 0 20px black;
+
 cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.grave:hover{
+
+transform:scale(1.05);
+
 }
 
 .cross{
+
 position:absolute;
-top:-40px;
-width:20px;
-height:70px;
-background:#aaa;
+
+top:-45px;
+
+width:22px;
+height:80px;
+
+background:#bbb;
+
 }
 
 .cross::after{
+
 content:"";
+
 position:absolute;
-top:20px;
-left:-20px;
-width:60px;
-height:20px;
-background:#aaa;
+
+top:25px;
+left:-25px;
+
+width:70px;
+height:22px;
+
+background:#bbb;
+
 }
 
 .name{
-font-size:28px;
+
+font-size:32px;
+text-shadow:0 0 15px rgba(255,255,255,0.8);
+
 }
+
+/* FLORES */
 
 .flowers{
-text-align:center;
-margin-top:10px;
-font-size:22px;
+
+margin-top:12px;
+font-size:24px;
+
 }
 
-/* coffin */
+/* CAIXÃO */
 
 .coffin-container{
+
 opacity:0;
-transform:translateY(300px);
+
+transform:translateY(400px);
+
 transition:2s;
+
 }
 
 .coffin-container.show{
+
 opacity:1;
 transform:translateY(0);
+
 }
 
 .coffin{
-width:320px;
-height:550px;
-background:#2a0d0d;
+
+width:400px;
+height:680px;
+
+background:linear-gradient(#3a1111,#1a0505);
+
 clip-path:polygon(
 50% 0%,
-90% 15%,
-90% 85%,
+85% 12%,
+92% 85%,
 50% 100%,
-10% 85%,
-10% 15%
+8% 85%,
+15% 12%
 );
+
 position:relative;
+
+box-shadow:
+0 0 60px rgba(0,0,0,0.9),
+inset 0 0 30px rgba(0,0,0,0.8);
+
 }
 
+/* TAMPA */
+
 .coffin-lid{
+
 position:absolute;
+
 width:100%;
 height:100%;
-background:#3a1111;
-transition:2s;
+
+background:linear-gradient(#4a1414,#2a0d0d);
+
 transform-origin:left;
+
+transition:2s;
+
+z-index:2;
+
 }
 
 .coffin-lid.open{
+
 transform:rotateY(-120deg);
+
+}
+
+/* INTERIOR */
+
+.coffin-inside{
+
+position:absolute;
+
+top:90px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:70%;
+height:450px;
+
+display:flex;
+flex-direction:column;
+
+align-items:center;
+
+z-index:1;
+
+}
+
+/* FLORES DO CAIXÃO */
+
+.coffin-flowers{
+
+font-size:26px;
+margin-bottom:15px;
+
+}
+
+/* TEXTO */
+
+.letter{
+
+width:100%;
+height:100%;
+
+overflow-y:auto;
+
+font-size:22px;
+line-height:1.7;
+
+color:#f0f0f0;
+
+text-shadow:0 0 6px black;
+
+background:rgba(0,0,0,0.35);
+
+padding:18px;
+
+border-radius:10px;
+
+box-shadow:
+inset 0 0 10px rgba(255,255,255,0.1);
+
+}
+
+/* SCROLL BONITO */
+
+.letter::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+.letter::-webkit-scrollbar-track{
+
+background:rgba(0,0,0,0.3);
+
+}
+
+.letter::-webkit-scrollbar-thumb{
+
+background:#666;
+border-radius:4px;
+
+}
+
+/* ZOOM */
+
+.zoom{
+
+transform:scale(1.3);
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:600px){
+
+.coffin{
+
+width:300px;
+height:520px;
+
 }
 
 .coffin-inside{
-position:absolute;
-width:100%;
-height:100%;
-padding:20px;
-box-sizing:border-box;
-}
 
-.coffin-flowers{
-font-size:24px;
-text-align:center;
-margin-bottom:10px;
+height:320px;
+
 }
 
 .letter{
-height:400px;
-overflow-y:auto;
-font-size:20px;
-line-height:1.6;
+
+font-size:18px;
+
 }
 
-/* zoom */
+.grave{
 
-.zoom{
-transform:scale(1.3);
+width:150px;
+height:200px;
+
+}
+
 }
