@@ -1,45 +1,51 @@
-const grave = document.getElementById("graveContainer");
+const grave = document.getElementById("grave");
 const scene = document.getElementById("scene");
 const coffin = document.getElementById("coffinContainer");
-const lid = document.getElementById("coffinLid");
+const lid = document.getElementById("lid");
 const letter = document.getElementById("letter");
 
-let opened=false;
+let opened = false;
 
-const message = `Estou enviando essa carta, direto dos monges de ratanaba...
+const text = `Estou enviando essa carta, direto dos monges de ratanaba, com ajuda do Deus tupã e paje rasmisin...
 
-Os deuses Tupi, me falaram em sonhos, grandes revelaçoes BOMBASTICAS...
+Os deuses Tupi me falaram em sonhos grandes revelaçoes...
 
-Dito isso, gostaria de marcar encontro com voce...`;
+Gostaria de marcar encontro com voce, oh Deusa ruiva.`;
 
-grave.onclick = ()=>{
+grave.onclick = function(){
 
-if(opened)return;
-opened=true;
+if(opened) return;
+
+opened = true;
 
 scene.classList.add("zoom");
 
 setTimeout(()=>{
+
 coffin.classList.add("show");
-},2000);
+
+},1500);
 
 setTimeout(()=>{
+
 lid.classList.add("open");
-typeLetter();
-},4000);
+typeText();
+
+},3500);
 
 };
 
-function typeLetter(){
+function typeText(){
 
 let i=0;
 
 function typing(){
 
-if(i<message.length){
+if(i < text.length){
 
-letter.innerHTML+=message[i];
+letter.innerHTML += text[i];
 i++;
+
 setTimeout(typing,20);
 
 }
